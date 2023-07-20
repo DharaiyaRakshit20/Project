@@ -1,0 +1,118 @@
+{% extends 'seller_hedar_fotter.html' %} {% load static %} {% block content %} 
+
+
+    <!-- Map Begin -->
+    <!-- {% comment %} <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111551.9926412813!2d-90.27317134641879!3d38.606612219170856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited%20States!5e0!3m2!1sen!2sbd!4v1597926938024!5m2!1sen!2sbd" height="500" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div> {% endcomment %} -->
+    <!-- Map End -->
+
+
+<h1 style="color: darkolivegreen; font-size: 80px; font-style: italic;"><center>My Listing</center></h1>
+<p><center>ALL LISTING</center></p>
+<div>
+  {% if one_data %}
+    {{msg}}
+  
+    <table style="font-family: aria, sans-serif; border-collapse: collapse; width: 100%; background-color:darkolivegreen; border:2px solid black; " >
+      <tr>
+        <th>NO.</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Sale Price</th><tab>
+        <th>Quntity</th><tab>
+        <th>Catgary</th><tab>
+        <th>Branding</th><tab>
+        <th>Tags</th><tab>
+        <th>Color</th><tab>
+        <th>Fabric</th>
+        <th>Size</th>
+        <th>Update  </th>
+        <th>Delete  </th>
+        <th style="width: 30px; overflow: hidden;">Description</th>
+      </tr>
+      {% for i in all_data %}
+      <tr style="background-color: white; border:2px solid black;">
+        <td>{{i.id}}</td>
+        <td><img src="{{i.Catlog_Image.url}}" alt="" height="50px" width="50px"></td>
+        <td>{{i.Catlog_Name}}</td>
+        <td>{{i.Catlog_Price}}</td>
+        <td>{{i.Catlog_Sale_Price}}</td>
+        <td>{{i.Catlog_Quntity}}</td>
+        <td>{{i.Catlog_Catgary}}</td>
+        <td>{{i.Catlog_Branding}}</td>
+        <td>{{i.Catlog_Tags}}</td>
+        <td>{{i.Catlog_Color}}</td>
+        <td>{{i.Catlog_Fabric}}</td>
+        <td>{{i.Catlog_Size}}</td>
+        <td> <a href="{% url 'seller_listing_update' i.id %}"><button style="color:black; background-color:darkolivegreen; border-radius:10px;">Upadte</button></a> </td>
+        <td> <a href="{% url 'delete' i.id %}"><button style="color:black; background-color:darkolivegreen; border-radius:10px;">Delete</button></a> </td>
+        <td style="width: 30px; overflow: hidden;">{{i.Catlog_Discription}}</td>
+      </tr>   
+      {% endfor %}
+    </table>
+  {% else %}
+    <table style="font-family: aria, sans-serif; border-collapse: collapse; width: 100%; background-color:darkolivegreen; border:2px solid black;">
+      <tr>
+        <th>NO.</th>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Sale Price</th><tab>
+        <th>Quntity</th><tab>
+        <th>Catgary</th><tab>
+        <th>Branding</th><tab>
+        <th>Tags</th><tab>
+        <th >Color</th><tab>
+        <th>Fabric</th>
+        <th>Size</th>
+        <th>Update  </th>
+        <th>Delete  </th>
+        <th style="width: 30px; overflow: hidden;">Description</th>
+      </tr>
+      {% for i in all_data %}
+      <tr style="background-color: white; border:2px solid black;">
+        <td>{{i.id}}</td>
+        <td><img src="{{i.Catlog_Image.url}}" alt="" height="50px" width="50px"></td>
+        <td>{{i.Catlog_Name}}</td>
+        <td>{{i.Catlog_Price}}</td>
+        <td>{{i.Catlog_Sale_Price}}</td>
+        <td>{{i.Catlog_Quntity}}</td>
+        <td>{{i.Catlog_Catgary}}</td>
+        <td>{{i.Catlog_Branding}}</td>
+        <td>{{i.Catlog_Tags}}</td>
+        <td>{{i.Catlog_Color}}</td>
+        <td>{{i.Catlog_Fabric}}</td>
+        <td>{{i.Catlog_Size}}</td>
+        <td> <a href="{% url 'seller_listing_update' i.id %}"><button style="color:black; background-color:darkolivegreen; border-radius:10px;">Upadte</button></a> </td>
+        <td> <a href="{% url 'delete' i.id %}"><button style="color:black; background-color:darkolivegreen; border-radius:10px;">Delete</button></a> </td>
+        <td style="width: 30px; overflow: hidden;">{{i.Catlog_Discription}}</td>
+      </tr>   
+      {% endfor %}
+    </table>
+
+    {% endif %}
+</div>
+
+    
+{% endblock %}
+
+
+{% comment %} table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+} {% endcomment %}
+
+

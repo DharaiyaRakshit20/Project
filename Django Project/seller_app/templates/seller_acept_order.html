@@ -1,0 +1,127 @@
+{% comment %} {% extends 'seller_hedar_fotter.html' %} {% load static %} {% block content %}  {% endcomment %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Man Fashion Shipping Label</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="shipping-label">
+    <h1>Man Fashion Shipping Label</h1>
+    {% comment %} {% for i in all_order %} {% endcomment %}
+    <div class="label-info ">
+      <div class="from">
+        <h2>From:</h2>
+        <p>Seller Name: </p>
+        <p>{{seller_data.seller_name}}</p>
+        <p>Seller Email ID: </p>
+        <p>{{seller_data.seller_email}}</p>
+        <h2>To:</h2>
+        <p>Buyer Name: </p>
+        <p>{{all_order.Details_id.firstname}} {{all_order.Details_id.lastname}}</p><br>
+        <p>Buyer Country: </p>
+        <p>{{all_order.Details_id.country}}</p><br>
+        <p>Buyer Address: </p>
+        <p>{{all_order.Details_id.address}},<br> {{all_order.Details_id.second_address}}, <br>{{all_order.Details_id.city}}-{{all_order.Details_id.postcode}}</p><br>
+        <p>Buyer Phone No.: </p>
+        <p>{{all_order.Details_id.phone}}</p><br>
+        <p>Buyer Email: </p>
+        <p>{{all_order.Details_id.email}}</p>
+        <br>
+        
+      </div>
+      <div class="to">
+        <h2>Product Details</h2>
+        <p>Order ID: </p>
+        <p>{{all_order.Details_id.order_id}}</p>
+        <br>
+        <p>Product Iamge: </p>
+        <p><img src="{{all_order.product_id.Catlog_Image.url}}" alt="" width="50px" height="50px"></p>
+        <p>Product Name: </p>
+        <p>{{all_order.product_id.Catlog_Name}}</p>
+        <p>Product Size: </p>
+        <p>{{all_order.product_size}}</p>
+        <p>Product color: </p>
+        <p>{{all_order.product_color}}</p>
+        <p>Product Quntity: </p>
+        <p>{{all_order.qty}}</p>
+        <p>Product Price: </p>
+        <p>{{all_order.product_id.Catlog_Price}}</p>
+        <p>Total Price: </p>
+        <p>{{all_order.total}}</p>
+      </div>
+    </div>
+    {% comment %} {% endfor %} {% endcomment %}
+    <div class="barcode">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?data={{all_order.Details_id.order_id}}&amp;size=100x100" alt="" title="" />
+    </div>
+
+    <h3>Buyer Payment Is RazerPay</h3>
+    <div class="barcode">
+      <button type="button" onclick="window.print()" style="padding:10px 30px 10px 30px; color:white; background-color:red; border:2px ; border-radius:20px;" >Print</button>
+    </div>
+  </div>
+  
+</body>
+</html>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.shipping-label {
+  width: 40%;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+h3 {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.label-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.from, .to {
+  flex: 1;
+}
+
+h2 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.barcode {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  
+}
+
+.barcode img {
+  max-width: 100%;
+  
+}
+
+
+</style>
+{% comment %} 
+{% endblock %} {% endcomment %}
